@@ -23,6 +23,7 @@ SELECT PublisherName FROM publisher WHERE PublisherName IN (SELECT PublisherName
 
 SELECT BorrowerName  FROM borrower WHERE BorrowerName  IN (SELECT BorrowerName FROM bookLoans WHERE CardNo=1)
 
+SELECT PublisherPhone FROM book LEFT JOIN  publisher ON book.PublisherName=publisher.PublisherName
 
 	select * from publisher
 	select * from book
