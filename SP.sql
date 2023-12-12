@@ -10,6 +10,19 @@ Declare @res int
 Exec Getphone 2, @res output
 print(@res)
 
+alter PROCEDURE Gender
+@GN bit,
+@res int output
+as
+begin
+SELECT BorrowerName FROM borrower where Gender=@GN
+end
+Declare @res int
+Exec Gender 0, @res output
+print(@res)
+
+
+
 
 
 	select * from publisher
