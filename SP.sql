@@ -1,3 +1,5 @@
+
+--Getting information about Borrowers
 ALTER PROCEDURE GetBorrowerDetails
 AS
 BEGIN
