@@ -14,6 +14,7 @@ SELECT LEN(Title) AS TitleLength FROM book;
 SELECT LEN(PublisherName) AS PublisherNameLength FROM publisher;
 
 SELECT STUFF(Title, 1, 3, 'NewTitle') AS NewTitle FROM book;
+SELECT STUFF(PublisherName, 1, 5, 'NewPublisher') AS NewPublisherName FROM publisher;
 
 
 
