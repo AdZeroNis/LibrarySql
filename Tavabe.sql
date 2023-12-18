@@ -10,6 +10,7 @@ SELECT LEFT(PublisherName, 5) AS LastFiveCharacters FROM publisher;
 SELECT UPPER(PublisherName)AS UpperName FROM publisher;
 SELECT LOWER(Title)AS UpperTitle FROM book;
 
+SELECT LEN(Title) AS TitleLength FROM book;
 
 select * from publisher
 select * from book
