@@ -5,6 +5,7 @@ SELECT LTRIM(PublisherName) AS TrimmedPublisherName FROM publisher;
 SELECT LTRIM(Title) AS TrimmedTitle FROM book;
 
 SELECT RIGHT(Title, 3) AS LastThreeCharacters FROM book;
+SELECT RIGHT(PublisherName, 5) AS LastFiveCharacters FROM publisher;
 
 
 select * from publisher
