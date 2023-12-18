@@ -4,7 +4,7 @@ SELECT SUBSTRING(PublisherName, 1, 5) AS ShortPublisherName FROM publisher;
 SELECT LTRIM(PublisherName) AS TrimmedPublisherName FROM publisher;
 SELECT LTRIM(Title) AS TrimmedTitle FROM book;
 
-
+SELECT RIGHT(Title, 3) AS LastThreeCharacters FROM book;
 
 
 select * from publisher
