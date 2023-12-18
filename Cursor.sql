@@ -27,17 +27,3 @@ CLOSE cursorname;
 DEALLOCATE cursorname;
 
 
-DECLARE @BorrowerName varchar(255),  @Gender bit
-DECLARE cursornamee CURSOR FOR
-    SELECT  Gender, BorrowerName FROM Borrower
-OPEN cursornamee;
-FETCH NEXT FROM cursornamee INTO  @Gender, @BorrowerName;
-WHILE (@@FETCH_STATUS = 0)
-BEGIN
-    SELECT  Gender, BorrowerName FROM Borrower
-    FETCH NEXT FROM cursornamee INTO  @Gender, @BorrowerName;
-END
-CLOSE cursornamee;
-DEALLOCATE cursornamee;
-
-
