@@ -11,6 +11,8 @@ SELECT UPPER(PublisherName)AS UpperName FROM publisher;
 SELECT LOWER(Title)AS UpperTitle FROM book;
 
 SELECT LEN(Title) AS TitleLength FROM book;
+SELECT LEN(PublisherName) AS PublisherNameLength FROM publisher;
+
 
 select * from publisher
 select * from book
