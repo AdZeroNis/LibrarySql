@@ -37,7 +37,6 @@ CREATE DATABASE LibraryManagementt
 		DueDate VARCHAR(50) 
 	);
 	select * from bookLoans
-	 
 	CREATE TABLE copies (
 		CopiesID INT PRIMARY KEY  IDENTITY (1,1),
 		BookID INT  FOREIGN KEY REFERENCES book(BookID),
@@ -51,4 +50,12 @@ CREATE DATABASE LibraryManagementt
 		AuthorName VARCHAR(50),
 	);
 
-	
+CREATE TABLE bookLoansLog (
+   LogID INT PRIMARY KEY IDENTITY (1,1),
+   BookID INT,
+   BranchID INT,
+   No_Of_CopiesBefore INT,
+   No_Of_CopiesAfter INT,
+   LogDate DATETIME DEFAULT GETDATE()
+);
+
