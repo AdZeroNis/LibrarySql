@@ -29,6 +29,8 @@ BEGIN
 END
 EXEC GetMostBorrowedBooks
 
+--Find books from a publisher
+
 CREATE FUNCTION GetBooksByPublisher(@PublisherName VARCHAR(100))
 RETURNS TABLE 
 AS
