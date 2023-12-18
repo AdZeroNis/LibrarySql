@@ -2,10 +2,13 @@ SELECT SUBSTRING(Title, 1, 3) AS ShortTitle FROM book;
 SELECT SUBSTRING(PublisherName, 1, 5) AS ShortPublisherName FROM publisher;
 
 SELECT LTRIM(PublisherName) AS TrimmedPublisherName FROM publisher;
-SELECT LTRIM(Title) AS TrimmedTitle FROM book;
+SELECT Rtrim(Title) AS TrimmedTitle FROM book;
 
 SELECT RIGHT(Title, 3) AS LastThreeCharacters FROM book;
-SELECT RIGHT(PublisherName, 5) AS LastFiveCharacters FROM publisher;
+SELECT LEFT(PublisherName, 5) AS LastFiveCharacters FROM publisher;
+
+SELECT UPPER(PublisherName)AS UpperName FROM publisher;
+SELECT LOWER(Title)AS UpperTitle FROM book;
 
 
 select * from publisher
