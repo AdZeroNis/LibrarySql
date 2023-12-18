@@ -20,6 +20,29 @@ BEGIN
 END
 EXEC GetBorrowerDetails
 
+----------------------------------------------------------------------------------------------------------------------
+
+--The first person on the list who bought a book from the mentioned date to the present
+
+CREATE PROCEDURE libraryManagementDATE
+@date VARCHAR(255),
+@result VARCHAR(255) OUTPUT
+AS
+BEGIN
+   SET @result = (
+      SELECT TOP 1 BorrowerName
+      FROM borrower 
+      INNER JOIN bookLoans ON borrower.CardNo = bookLoans.CardNo
+      WHERE bookLoans.DateOut BETWEEN @date AND GETDATE() 
+   )
+END
+DECLARE @res VARCHAR(255);
+EXEC libraryManagementDATE '1/1/6', @res OUTPUT;
+SELECT @res;
+
+
+
+
 
 
 
