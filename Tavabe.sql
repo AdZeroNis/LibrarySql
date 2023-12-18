@@ -13,6 +13,11 @@ SELECT LOWER(Title)AS UpperTitle FROM book;
 SELECT LEN(Title) AS TitleLength FROM book;
 SELECT LEN(PublisherName) AS PublisherNameLength FROM publisher;
 
+SELECT STUFF(Title, 1, 3, 'NewTitle') AS NewTitle FROM book;
+
+
+
+
 
 select * from publisher
 select * from book
