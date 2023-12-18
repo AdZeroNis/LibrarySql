@@ -1,48 +1,22 @@
-
-create PROCEDURE GetPhone
-@Id int,
-@res  int output
-as
-begin
-SELECT PublisherPhone FROM book LEFT JOIN  publisher ON book.PublisherName=publisher.PublisherName where BookID=@Id
-end
-Declare @res int
-Exec Getphone 2, @res output
-print(@res)
-
-alter PROCEDURE Gender
-@GN bit,
-@res int output
-as
-begin
-SELECT BorrowerName FROM borrower where Gender=@GN
-end
-Declare @res int
-Exec Gender 0, @res output
-print(@res)
-
-
-CREATE PROCEDURE GetBorrowerDetails
-@CardNo INT,
-@BorrowerName VARCHAR(100) OUTPUT,
-@BorrowerAddress VARCHAR(200) OUTPUT,
-@BorrowerPhone VARCHAR(50) OUTPUT,
-@Gender BIT OUTPUT
+ALTER PROCEDURE GetBorrowerDetails
 AS
 BEGIN
- SELECT @BorrowerName = BorrowerName, @BorrowerAddress = BorrowerAddress, @BorrowerPhone = BorrowerPhone, @Gender = Gender
- FROM borrower
- WHERE CardNo = @CardNo
+ DECLARE @CardNo INT, @BorrowerName VARCHAR(100), @BorrowerAddress VARCHAR(200), @BorrowerPhone VARCHAR(50), @Gender VARCHAR(10)
+ DECLARE cur CURSOR FOR SELECT CardNo, BorrowerName, BorrowerAddress, BorrowerPhone, Gender FROM borrower
+ OPEN cur
+ FETCH NEXT FROM cur INTO @CardNo, @BorrowerName, @BorrowerAddress, @BorrowerPhone, @Gender
+ WHILE @@FETCH_STATUS = 0
+ BEGIN
+ PRINT @BorrowerName
+ PRINT @BorrowerAddress
+ PRINT @BorrowerPhone
+ PRINT CASE @Gender WHEN 1 THEN 'Male' WHEN 0 THEN 'Female' END
+ FETCH NEXT FROM cur INTO @CardNo, @BorrowerName, @BorrowerAddress, @BorrowerPhone, @Gender
+ END
+ CLOSE cur
+ DEALLOCATE cur
 END
-
-DECLARE @BorrowerName VARCHAR(100), @BorrowerAddress VARCHAR(200), @BorrowerPhone VARCHAR(50), @Gender BIT
-EXEC GetBorrowerDetails 1, @BorrowerName OUTPUT, @BorrowerAddress OUTPUT, @BorrowerPhone OUTPUT, @Gender OUTPUT
-PRINT @BorrowerName
-PRINT @BorrowerAddress
-PRINT @BorrowerPhone
-PRINT @Gender
-
-
+EXEC GetBorrowerDetails
 
 
 
