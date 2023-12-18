@@ -148,9 +148,18 @@
 		('13','William Goldman'),
 		('14','Chuck Palahniuk'),
 		('15','Louis Sachar');
+INSERT INTO bookLoansLog
+  (BookID, BranchID, No_Of_CopiesBefore, No_Of_CopiesAfter)
+    VALUES
+  (1, 1, 5, 4),
+  (2, 1, 5, 4),
+  (3, 1, 5, 4);
+
+
 		select * from publisher
 		select * from book
 		select * from borrower
 		select * from bookLoans
 		select * from copies
 		select * from libraryBranch
+		select * from bookLoansLog
