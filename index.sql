@@ -1,0 +1,12 @@
+CREATE INDEX idx_publisher_PublisherName ON publisher (PublisherName);
+CREATE INDEX idx_book_PublisherName ON book (PublisherName);
+CREATE INDEX idx_libraryBranch_BranchID ON libraryBranch (BranchID);
+CREATE INDEX idx_borrower_CardNo ON borrower (CardNo);
+CREATE INDEX idx_bookLoans_BookID ON bookLoans (BookID);
+CREATE INDEX idx_bookLoans_BranchID ON bookLoans (BranchID);
+CREATE INDEX idx_bookLoans_CardNo ON bookLoans (CardNo);
+CREATE INDEX idx_copies_BookID ON copies (BookID);
+CREATE INDEX idx_copies_BranchID ON copies (BranchID);
+CREATE INDEX idx_authors_BookID ON authors (BookID);
+CREATE INDEX idx_bookLoansLog_BookID ON bookLoansLog (BookID);
+CREATE INDEX idx_bookLoansLog_BranchID ON bookLoansLog (BranchID);
