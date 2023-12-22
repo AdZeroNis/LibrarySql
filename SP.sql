@@ -25,7 +25,7 @@ EXEC GetBorrowerDetails
 
 --The first person on the list who bought a book from the mentioned date to the present
 
-CREATE PROCEDURE libraryManagementDATE
+ALTER PROCEDURE libraryManagementDATE
 @date VARCHAR(255),
 @result VARCHAR(255) OUTPUT
 AS
@@ -40,8 +40,6 @@ END
 DECLARE @res VARCHAR(255);
 EXEC libraryManagementDATE '1/1/6', @res OUTPUT;
 SELECT @res;
-
-
 
 
 
