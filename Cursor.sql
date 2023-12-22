@@ -1,3 +1,4 @@
+
 DECLARE @BorrowerName varchar(255), @CardNo int, @Gender bit, @BorrowerPhone varchar(255), @BorrowerAddress varchar(255)
 DECLARE cursor_name CURSOR FOR
     SELECT CardNo, Gender, BorrowerPhone, BorrowerAddress, BorrowerName FROM Borrower$
@@ -25,5 +26,19 @@ BEGIN
 END
 CLOSE cursorname;
 DEALLOCATE cursorname;
+
+
+declare @name varchar(255)
+declare cr_name cursor for
+select BorrowerName from borrower
+open cr_name
+fetch next from cr_name into @name
+while (@@FETCH_STATUS=0)
+begin 
+    print @name
+	fetch next from cr_name into @name
+end
+close cr_name
+deallocate cr_name
 
 
