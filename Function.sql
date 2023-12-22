@@ -1,46 +1,36 @@
-﻿select * from publisher
+﻿
+
+select * from publisher
 select * from book
 select * from borrower
 select * from bookLoans
 select * from copies
 select * from libraryBranch
-
---Find the books that have been borrowed the most
-CREATE FUNCTION MostBorrowedBooks()
-RETURNS @Books TABLE 
-(
-   Title VARCHAR(100),
-   NumberOfLoans INT
-)
+--calculate the average number of loans per branch (libraryBranch)
+ALTER FUNCTION AvgLoansPerBranch (@branchId INT)
+RETURNS FLOAT
 AS
 BEGIN
-   INSERT INTO @Books
-   SELECT b.Title, COUNT(bl.LoansID) as NumberOfLoans
-   FROM book b
-   JOIN bookLoans bl ON b.BookID = bl.BookID
-   GROUP BY b.Title
-   RETURN
-END
+ DECLARE @result FLOAT;
+ SELECT @result = AVG(loanCount) FROM ( SELECT COUNT(*) as loanCount FROM bookLoans WHERE BranchID = @branchId 
+ GROUP BY BranchID
+ ) as CountLoan;
+ RETURN @result;
+END;
 
-CREATE PROCEDURE GetMostBorrowedBooks
-AS
-BEGIN
-   SELECT * FROM MostBorrowedBooks() ORDER BY NumberOfLoans DESC
-END
-EXEC GetMostBorrowedBooks
+SELECT dbo.AvgLoansPerBranch(2);
+
 
 --Find books from a publisher
 
 CREATE FUNCTION GetBooksByPublisher(@PublisherName VARCHAR(100))
-RETURNS TABLE 
+RETURNS VARCHAR(255)
 AS
-RETURN 
-(
-  SELECT BookID, Title
-  FROM book
-  WHERE PublisherName = @PublisherName
-)
-SELECT * FROM GetBooksByPublisher('Negah');
-
-
-
+BEGIN
+ DECLARE @RESULT VARCHAR(255)
+ SELECT @RESULT = Title
+ FROM book
+ WHERE PublisherName = @PublisherName;
+ RETURN @RESULT;
+END;
+SELECT  dbo.GetBooksByPublisher('Negah');
